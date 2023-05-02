@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <nav className="navbar bg-base-300">
             <div className="navbar-start">
@@ -23,21 +26,33 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end flex items-center me-4">
-                <div className="dropdown dropdown-end dropdown-hover">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" />
-                        </div>
-                    </label>
-                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <h4 className="justify-between">
-                                Profile
-                            </h4>
-                        </li>
-                    </ul>
-                </div>
-                <button className="btn btn-warning ms-4 px-6 text-medium capitalize"><Link>Logout</Link></button>
+                {
+                    user ?
+                        <>
+                            <div className="dropdown dropdown-end dropdown-hover">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                                    <li>
+                                        <h4 className="justify-between">
+                                            {user.displayName}
+                                        </h4>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button className="btn btn-warning ms-4 px-6 text-medium capitalize">
+                                <Link>Logout</Link>
+                            </button>
+                        </> :
+                        <button className="btn btn-warning ms-4 px-6 text-medium capitalize">
+                            <Link to="/login">Login</Link>
+                        </button>
+                }
+
+
             </div>
         </nav>
     );
