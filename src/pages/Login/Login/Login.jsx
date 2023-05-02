@@ -7,7 +7,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
     const handleSignIn = event => {
         event.preventDefault();
@@ -30,6 +30,38 @@ const Login = () => {
             })
             .catch(error => {
                 // console.log(error);
+                setError(error.message);
+            });
+    }
+
+    const handleSignInWithGoogle = () => {
+        setError('');
+        setSuccess('');
+
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                // console.log(loggedUser);
+                setSuccess('User Login Successful...');
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error.message);
+            });
+    }
+
+    const handleSignInWithGithub = () => {
+        setError('');
+        setSuccess('');
+
+        signInWithGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                // console.log(loggedUser);
+                setSuccess('User Login Successful...');
+            })
+            .catch(error => {
+                console.log(error);
                 setError(error.message);
             });
     }
@@ -62,11 +94,11 @@ const Login = () => {
             </form>
             <div className="divider mx-7">OR</div>
             <div className='flex justify-center gap-8 py-7'>
-                <button className="btn text-lg capitalize flex items-center gap-3">
+                <button onClick={handleSignInWithGoogle} className="btn text-lg capitalize flex items-center gap-3">
                     <FaGoogle className="text-xl" />
                     <span>Sign In With Google</span>
                 </button>
-                <button className="btn text-lg capitalize flex items-center gap-3">
+                <button onClick={handleSignInWithGithub} className="btn text-lg capitalize flex items-center gap-3">
                     <FaGithub className="text-xl" />
                     Sign In With Github
                 </button>
