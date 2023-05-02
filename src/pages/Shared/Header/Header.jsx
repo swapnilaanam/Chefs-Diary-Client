@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="navbar bg-base-100">
+        <nav className="navbar bg-base-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,7 +39,7 @@ const Header = () => {
                 </div>
                 <button className="btn btn-warning ms-4 px-6 text-medium capitalize"><Link>Logout</Link></button>
             </div>
-        </div>
+        </nav>
     );
 };
 
