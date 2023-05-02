@@ -1,13 +1,57 @@
-import React from 'react';
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const { createUser, updateUser } = useContext(AuthContext);
+
+    const handleRegister = event => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        // console.log(name, photo, email, password);
+
+        setError('');
+        setSuccess('');
+
+        createUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                // console.log(createdUser);
+                setSuccess('User Registered Successfully...');
+                handleUpdateUser(createdUser, name, photo);
+                form.reset();
+            })
+            .catch(error => {
+                // console.log(error);
+                setError(error.message);
+            })
+    }
+
+    const handleUpdateUser = (user, name, photo) => {
+        updateUser(user, name, photo)
+            .then(() => { })
+            .catch(error => {
+                setError(error.message);
+            });
+    }
+
     return (
         <div>
             <div className="card w-full max-w-xl bg-gray-200 shadow-lg mx-auto mt-8 mb-14 rounded-lg">
-                <form className="card-body mx-2">
+                <form onSubmit={handleRegister} className="card-body mx-2">
+
                     <h4 className="form-title text-center text-2xl text-black font-medium">Please Register</h4>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-xl">Name</span>
@@ -32,11 +76,15 @@ const Register = () => {
                         </label>
                         <input type="password" id="r-password" name="password" placeholder="Enter Your Password" className="input input-bordered w-full" required />
                     </div>
+
+                    <p className="text-red-500 text-lg font-medium">{error}</p>
+                    <p className="text-green-600 text-lg font-medium">{success}</p>
+
                     <div className="form-control mt-6">
                         <button className="btn text-white text-xl capitalize">Register</button>
                     </div>
                 </form>
-                
+
                 <p className='text-center text-black pb-6 text-xl font-medium'>
                     Already Have An Account?
                     <Link to="/login" className="ms-2 text-green-600 text-2xl font-bold"> Login.</Link>
