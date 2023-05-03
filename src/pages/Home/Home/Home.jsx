@@ -1,11 +1,20 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
+import HomeBanner from '../HomeBanner/HomeBanner';
+import { useLoaderData } from 'react-router-dom';
 
 
 const Home = () => {
+    const chefs = useLoaderData();
+    console.log(chefs);
+    
     return (
         <div>
-            <Banner></Banner>
+            <HomeBanner></HomeBanner>
+            <div>
+                {
+                    
+                }
+            </div>
         </div>
     );
 };
