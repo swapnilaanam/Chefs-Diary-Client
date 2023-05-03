@@ -38,7 +38,7 @@ const ChefCard = ({ chef }) => {
                 <div className="card-actions justify-end">
                     <Link to={`/chefs/${chefId}`}>
                         <button className="btn btn-warning border-0 gap-3 text-lg font-bold capitalize">
-                            <spam>View Recipes</spam>
+                            <span>View Recipes</span>
                             <FaArrowRight />
                         </button>
                     </Link>
