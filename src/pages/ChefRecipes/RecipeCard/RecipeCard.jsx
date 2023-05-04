@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Rating } from '@smastrom/react-rating';
-import { FcLike } from "react-icons/fc";
+import { ToastContainer, toast } from 'react-toastify';
 
 import '@smastrom/react-rating/style.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaHeart } from 'react-icons/fa';
 
 const RecipeCard = ({ recipe }) => {
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const { recipeId, recipeName, ingredients, cookingMethod, rating } = recipe;
 
+    const handleAddToFavorite = () => {
+        toast.success('The Recipe Is Your Favorite ❤️!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
+        setIsFavorite(true);
+    }
+
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl" style={{minHeight: "504px"}}>
+        <div className="card card-compact w-96 bg-base-100 shadow-xl" style={{ minHeight: "504px" }}>
             <div className="card-body">
                 <h2 className="card-title text-3xl text-center">{recipeName}</h2>
                 <h4 className="text-xl font-medium">Ingredients: </h4>
@@ -32,12 +50,27 @@ const RecipeCard = ({ recipe }) => {
                     <span className="text-2xl font-medium">{rating}</span>
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-warning  border-0 gap-3 text-lg font-bold capitalize">
+                    <button onClick={handleAddToFavorite}
+                        className="btn bg-green-600 hover:bg-green-700 border-0 gap-3 text-lg font-bold capitalize"
+                        disabled={isFavorite}
+                    >
                         <span>Add To Favorite</span>
-                        <FcLike className="text-2xl" />
+                        <FaHeart className="text-2xl" />
                     </button>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };
