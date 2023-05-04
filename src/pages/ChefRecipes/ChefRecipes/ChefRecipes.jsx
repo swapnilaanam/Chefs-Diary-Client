@@ -6,7 +6,7 @@ import RecipeCard from '../RecipeCard/RecipeCard';
 const ChefRecipes = () => {
     const chef = useLoaderData();
 
-    const { chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes, recipes } = chef;
+    const { chefPicture, chefName, chefBio, yearsOfExperience, numberOfRecipes, likes, recipes } = chef;
 
     return (
         <div>
@@ -15,9 +15,9 @@ const ChefRecipes = () => {
                     <img src={chefPicture} className=" object-cover object-top rounded m-4" style={{height: "450px", minWidth: "750px"}}/>
                     <div className="mx-10 py-7">
                         <h1 className="text-4xl font-bold">{chefName}</h1>
-                        <h4 className="pt-5 text-xl font-semibold">Biography: </h4>
+                        <h4 className="pt-5 text-xl font-semibold">Chef Bio: </h4>
                         <p className="py-3 text-lg">
-                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+                            {chefBio}
                         </p>
                         <div className="mt-4">
                             <div className="flex justify-start items-center gap-3 mb-4">

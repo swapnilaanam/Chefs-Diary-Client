@@ -22,7 +22,7 @@ const RecipeCard = ({ recipe }) => {
                     </li>)}
                 </ol>
                 <h4 className="text-xl font-medium">Cooking Method:</h4>
-                <p className="ms-2 text-lg">{cookingMethod}</p>
+                <p className="ms-2 text-lg">{cookingMethod}.</p>
                 <div className="flex items-center gap-5 my-3">
                     <Rating
                         style={{ maxWidth: 140 }}
