@@ -12,7 +12,7 @@ const Home = () => {
     const navigation = useNavigation();
 
     if (navigation.state === "loading") {
-       
+
         return (
             <div role="status" className="py-3">
                 <svg aria-hidden="true" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,10 +28,14 @@ const Home = () => {
         <div>
             <HomeBanner></HomeBanner>
 
+            {/* Our Specialty Section */}
+
             <section className="mt-32 mb-36">
                 <h3 className='text-center text-4xl font-semibold mb-16'>Our Specialty</h3>
                 <Specialty></Specialty>
             </section>
+
+            {/* Chefs Section */}
 
             <section id="chefs-section" className="mt-32 mb-36">
                 <h3 className='text-center text-4xl font-semibold mb-16'>All Our Chefs</h3>
@@ -45,6 +49,8 @@ const Home = () => {
                     }
                 </div>
             </section>
+
+            {/* Customer Reviews Section */}
 
             <section className="mt-32 mb-36 mx-4">
                 <h3 className='text-center text-4xl font-semibold mb-16'>Customer Reviews</h3>
