@@ -44,7 +44,7 @@ const Header = () => {
                     </li>
                 </ul>
             </div>
-            <div className="navbar-end flex items-center me-4">
+            <div className="navbar-end flex flex-col items-end justify-center sm:justify-end sm:flex-row sm:items-center sm:me-4">
                 {
                     user ?
                         <>

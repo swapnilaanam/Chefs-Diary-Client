@@ -35,7 +35,7 @@ const Home = () => {
 
             <section id="chefs-section" className="mt-32 mb-36">
                 <h3 className='text-center text-4xl font-semibold mb-16'>All Our Chefs</h3>
-                <div className="flex flex-wrap justify-center items-center gap-12">
+                <div className="flex flex-wrap justify-center items-center gap-12 px-4">
                     {
                         chefs.map(chef => <ChefCard
                             key={chef.chefId}
@@ -46,7 +46,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="mt-32 mb-36">
+            <section className="mt-32 mb-36 mx-4">
                 <h3 className='text-center text-4xl font-semibold mb-16'>Customer Reviews</h3>
                 <Reviews></Reviews>
             </section>
