@@ -8,9 +8,9 @@
   }
 }
 
-/* ----------------------
+/* --------------------------
       Universal Styles
-------------------------- */
+----------------------------- */
 
 * {
   box-sizing: border-box;
@@ -18,4 +18,22 @@
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
+}
+
+/* ---------------------------
+      React Lazy Load Styles
+------------------------------ */
+
+.LazyLoad {
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+  /* margin: 0 0 300px; */
+}
+
+.is-visible {
+  opacity: 1;
+}
+
+.filler {
+  height: 150px;
 }
