@@ -26,7 +26,7 @@ const Header = () => {
                             <ActiveLink to="/" >Home</ActiveLink>
                         </li>
                         <li>
-                            <ActiveLink to="/blog" >Blog</ActiveLink>
+                            <ActiveLink to="/blogs" >Blog</ActiveLink>
                         </li>
                     </ul>
                 </div>
@@ -40,7 +40,7 @@ const Header = () => {
                         <ActiveLink to="/" >Home</ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink to="/blog" >Blog</ActiveLink>
+                        <ActiveLink to="/blogs" >Blog</ActiveLink>
                     </li>
                 </ul>
             </div>
