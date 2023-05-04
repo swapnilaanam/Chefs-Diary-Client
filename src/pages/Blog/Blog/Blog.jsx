@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import ReactToPdf from 'react-to-pdf';
 
 const Blog = () => {
+    const blogRef = useRef();
+
     return (
         <div className="min-h-screen">
-            <h2 className="text-3xl font-bold my-16 text-center">Welcome To Our Blog</h2>
-            <section id="blogs" className="w-2/3 mx-auto">
-                <div className="collapse collapse-arrow mb-7">
-                    <input type="checkbox" className="peer" />
+            <h2 className="text-3xl font-bold mt-16 mb-4 text-center">Welcome To Our Blog</h2>
+            <ReactToPdf targetRef={blogRef} filename="chefs-diary-blog.pdf" x={10} y={7} scale={0.7}>
+                {({ toPdf }) => (
+                    <div className="text-center mb-16">
+                        <button className="bg-red-600 text-white text-xl font-medium px-4 py-2 rounded-md" onClick={toPdf}>
+                            Generate Pdf
+                        </button>
+                    </div>
+                )}
+            </ReactToPdf>
+            <section id="blogs" className="w-2/3 mx-auto" ref={blogRef}>
+                <div className="collapse collapse-arrow collapse-open mb-7 rounded-lg">
+                    <input type="checkbox" className="peer peer-open" />
                     <div className="collapse-title bg-gray-300 text-black text-2xl font-medium capitalize">
                         1. Tell us the differences between uncontrolled and controlled components.
                     </div>
@@ -27,7 +39,8 @@ const Blog = () => {
                         </ol>
                     </div>
                 </div>
-                <div className="collapse collapse-arrow mb-7">
+
+                <div className="collapse collapse-arrow collapse-open mb-7 rounded-lg">
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title bg-gray-300 text-black text-2xl font-medium capitalize">
                         2. How to validate React props using PropTypes ?
@@ -51,7 +64,7 @@ const Blog = () => {
                     </div>
                 </div>
 
-                <div className="collapse collapse-arrow mb-7">
+                <div className="collapse collapse-arrow mb-7 collapse-open rounded-lg">
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title bg-gray-300 text-black text-2xl font-medium capitalize">
                         3. Tell us the difference between node js and express js.
@@ -72,7 +85,8 @@ const Blog = () => {
                         </ol>
                     </div>
                 </div>
-                <div className="collapse collapse-arrow mb-7">
+
+                <div className="collapse collapse-arrow mb-7 collapse-open rounded-lg">
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title bg-gray-300 text-black text-2xl font-medium capitalize">
                         4. What is a custom hook, and why will you create a custom hook?
@@ -82,7 +96,7 @@ const Blog = () => {
                             A custom hook is a custom reusable function, not provided by default. Custom hooks start with "use".
                         </p>
                         <p className="pt-4">
-                            When we have component logic that can be used by multiple components, we can use that logic to 
+                            When we have component logic that can be used by multiple components, we can use that logic to
                             build a custom hook.
                         </p>
                         <p className="pt-4">
