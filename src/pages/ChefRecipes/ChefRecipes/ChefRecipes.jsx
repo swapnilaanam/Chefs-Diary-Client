@@ -12,7 +12,9 @@ const ChefRecipes = () => {
         <div>
             <div className="hero min-h-16 bg-base-200">
                 <div className="flex flex-col items-center justify-center w-full lg:flex-row lg:justify-evenly lg:items-center">
-                    <img src={chefPicture} className=" object-cover object-top rounded m-4" style={{height: "450px", minWidth: "750px"}}/>
+                    <img src={chefPicture} className=" object-cover object-top rounded mx-4 my-7"
+                        style={{ height: "450px", minWidth: "750px" }}
+                    />
                     <div className="mx-10 py-7">
                         <h1 className="text-4xl font-bold">{chefName}</h1>
                         <h4 className="pt-5 text-xl font-semibold">Chef Bio: </h4>

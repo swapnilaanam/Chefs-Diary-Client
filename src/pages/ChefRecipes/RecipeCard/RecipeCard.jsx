@@ -27,7 +27,7 @@ const RecipeCard = ({ recipe }) => {
     }
 
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl" style={{ minHeight: "504px" }}>
+        <div className="card card-compact w-96 bg-base-300 shadow-xl" style={{ minHeight: "504px" }}>
             <div className="card-body">
                 <h2 className="card-title text-3xl text-center">{recipeName}</h2>
                 <h4 className="text-xl font-medium">Ingredients: </h4>
